@@ -35,6 +35,7 @@ add_compile_options(
   -Werror
   -std=c++11
   -g
+  -fPIC
 )
 
 enable_testing()
