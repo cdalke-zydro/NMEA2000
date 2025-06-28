@@ -61,7 +61,7 @@ enum tN2kZydroDeviceHealth {
 };
 
 /**************************************************************************
- * \brief Setting up PGN 360000 for Zydro "Product Heartbeat"
+ * \brief Setting up PGN 65280 for Zydro "Product Heartbeat"
  * 
  * This message is broadcast periodically by all Zydro products to provide
  * a heartbeat used for auto-detection purposes.
@@ -75,10 +75,10 @@ enum tN2kZydroDeviceHealth {
  * \param ModelID         Zydro-specific product model ID, from a Zydro internal enumeration.
  * \param Health          Health status for the device, from a Zydro internal enumeration.
  */
-void SetN2kPGN360000(tN2kMsg &N2kMsg, unsigned char SID, tN2kZydroDeviceModel ModelID, tN2kZydroDeviceHealth Health);
+void SetN2kPGN65280(tN2kMsg &N2kMsg, unsigned char SID, tN2kZydroDeviceModel ModelID, tN2kZydroDeviceHealth Health);
 
 /**************************************************************************
- * \brief Parsing PGN 360000 for Zydro "Product Heartbeat"
+ * \brief Parsing PGN 65280 for Zydro "Product Heartbeat"
  * 
  * This message is broadcast periodically by all Zydro products to provide
  * a heartbeat used for auto-detection purposes.
@@ -93,7 +93,7 @@ void SetN2kPGN360000(tN2kMsg &N2kMsg, unsigned char SID, tN2kZydroDeviceModel Mo
  * \return false    Parsing of PGN Message aborted
  *
  */
-bool ParseN2kPGN360000(const tN2kMsg &N2kMsg, unsigned char &SID, tN2kZydroDeviceModel &ModelID, tN2kZydroDeviceHealth &Health);
+bool ParseN2kPGN65280(const tN2kMsg &N2kMsg, unsigned char &SID, tN2kZydroDeviceModel &ModelID, tN2kZydroDeviceHealth &Health);
 
 /**************************************************************************/
 

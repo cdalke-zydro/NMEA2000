@@ -28,10 +28,10 @@
 #define ZydroProprietary 0x3600 // Random placeholder number
 
 /**************************************************************************/
-// PGN 360000: Zydro "Product Heartbeat"
+// PGN 65280: Zydro "Product Heartbeat"
 
-void SetN2kPGN360000(tN2kMsg &N2kMsg, unsigned char SID, tN2kZydroDeviceModel ModelID, tN2kZydroDeviceHealth Health) {
-    N2kMsg.SetPGN(360000L);
+void SetN2kPGN65280(tN2kMsg &N2kMsg, unsigned char SID, tN2kZydroDeviceModel ModelID, tN2kZydroDeviceHealth Health) {
+    N2kMsg.SetPGN(65280L);
     N2kMsg.Priority=5;
     N2kMsg.Add2ByteUInt(ZydroProprietary);
     N2kMsg.AddByte(SID);
@@ -39,8 +39,8 @@ void SetN2kPGN360000(tN2kMsg &N2kMsg, unsigned char SID, tN2kZydroDeviceModel Mo
     N2kMsg.AddByte((unsigned char)Health);
 }
 
-bool ParseN2kPGN360000(const tN2kMsg &N2kMsg, unsigned char &SID, tN2kZydroDeviceModel &ModelID, tN2kZydroDeviceHealth &Health) {
-  if (N2kMsg.PGN!=360000L) return false;
+bool ParseN2kPGN65280(const tN2kMsg &N2kMsg, unsigned char &SID, tN2kZydroDeviceModel &ModelID, tN2kZydroDeviceHealth &Health) {
+  if (N2kMsg.PGN!=65280L) return false;
   int Index=0;
   if (N2kMsg.Get2ByteUInt(Index)!=ZydroProprietary) return false;
   SID=N2kMsg.GetByte(Index);
