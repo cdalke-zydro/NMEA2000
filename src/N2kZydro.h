@@ -21,7 +21,7 @@
  * SOFTWARE.
 */
 
-/**************************************************************************//**
+/****************************************************************************
  * \file   N2kZydro.h
  * \brief  Collection of functions for handling NMEA2000 Zydro Marine messages
  *
@@ -77,7 +77,7 @@ enum tN2kZydroDeviceHealth {
  */
 void SetN2kPGN360000(tN2kMsg &N2kMsg, unsigned char SID, tN2kZydroDeviceModel ModelID, tN2kZydroDeviceHealth Health);
 
-/************************************************************************//**
+/**************************************************************************
  * \brief Parsing PGN 360000 for Zydro "Product Heartbeat"
  * 
  * This message is broadcast periodically by all Zydro products to provide
@@ -95,6 +95,7 @@ void SetN2kPGN360000(tN2kMsg &N2kMsg, unsigned char SID, tN2kZydroDeviceModel Mo
  */
 bool ParseN2kPGN360000(const tN2kMsg &N2kMsg, unsigned char &SID, tN2kZydroDeviceModel &ModelID, tN2kZydroDeviceHealth &Health);
 
-/************************************************************************//**
+/**************************************************************************/
+
 #endif
 

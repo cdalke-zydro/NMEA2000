@@ -27,7 +27,7 @@
 
 #define ZydroProprietary 0x3600 // Random placeholder number
 
-//*****************************************************************************
+/**************************************************************************/
 // PGN 360000: Zydro "Product Heartbeat"
 
 void SetN2kPGN360000(tN2kMsg &N2kMsg, unsigned char SID, tN2kZydroDeviceModel ModelID, tN2kZydroDeviceHealth Health) {
