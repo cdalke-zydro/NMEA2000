@@ -100,8 +100,8 @@ bool ParseN2kPGN65280(const tN2kMsg &N2kMsg, unsigned char &SID, tN2kZydroDevice
  * \param Target          Target throttle value, as double. In throttle percentage mode, this is -1.0 to 1.0, in RPM mode this is an RPM.
  * \param ShiftGears      Boolean, whether to also shift engine gear in tandem with throttle if available.
  */
-void SetN2kPGN65281(tN2kMsg &N2kMsg, unsigned char ThrottleID, tN2kZydroThrottleSetpointMode Mode, double Target, bool ShiftGears);
-bool ParseN2kPGN65281(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydroThrottleSetpointMode &Mode, double &Target, bool &ShiftGears);
+void SetN2kPGN65281(tN2kMsg &N2kMsg, unsigned char ThrottleID, tN2kZydroThrottleSetpointMode Mode, float Target, bool ShiftGears);
+bool ParseN2kPGN65281(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydroThrottleSetpointMode &Mode, float &Target, bool &ShiftGears);
 
 /**************************************************************************
  * \brief PGN 65282: Zydro "Throttle Control Status"
@@ -116,8 +116,8 @@ bool ParseN2kPGN65281(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydr
  * \param CurrentValue    Current control value.
  * \param CurrentGear     Current gear value (0 = disengaged, 1 = forward, 2 = reverse)
  */
-void SetN2kPGN65282(tN2kMsg &N2kMsg, unsigned char ThrottleID, tN2kZydroThrottleSetpointMode Mode, double TargetValue, double CurrentValue, unsigned char CurrentGear);
-bool ParseN2kPGN65282(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydroThrottleSetpointMode &Mode, double &TargetValue, double &CurrentValue, unsigned char &CurrentGear);
+void SetN2kPGN65282(tN2kMsg &N2kMsg, unsigned char ThrottleID, tN2kZydroThrottleSetpointMode Mode, float TargetValue, float CurrentValue, unsigned char CurrentGear);
+bool ParseN2kPGN65282(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydroThrottleSetpointMode &Mode, float &TargetValue, float &CurrentValue, unsigned char &CurrentGear);
 
 /**************************************************************************/
 

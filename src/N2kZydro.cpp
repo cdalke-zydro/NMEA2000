@@ -48,3 +48,53 @@ bool ParseN2kPGN65280(const tN2kMsg &N2kMsg, unsigned char &SID, tN2kZydroDevice
   Health=(tN2kZydroDeviceHealth)(N2kMsg.GetByte(Index));
   return true;
 }
+
+/**************************************************************************/
+// PGN 65281: Zydro "Throttle Control Setpoint"
+
+void SetN2kPGN65281(tN2kMsg &N2kMsg, unsigned char ThrottleID, tN2kZydroThrottleSetpointMode Mode, float Target, bool ShiftGears) {
+    N2kMsg.SetPGN(65281L);
+    N2kMsg.Priority=5;
+    N2kMsg.Add2ByteUInt(ZydroProprietary);
+    N2kMsg.AddByte((unsigned char)ThrottleID);
+    N2kMsg.AddByte((unsigned char)Mode);
+    N2kMsg.AddFloat(Target);
+    N2kMsg.AddByte((unsigned char)ShiftGears);
+}
+
+bool ParseN2kPGN65281(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydroThrottleSetpointMode &Mode, double &Target, bool &ShiftGears) {
+  if (N2kMsg.PGN!=65281L) return false;
+  int Index=0;
+  if (N2kMsg.Get2ByteUInt(Index)!=ZydroProprietary) return false;
+  ThrottleID=N2kMsg.GetByte(Index);
+  Mode=(tN2kZydroThrottleSetpointMode)(N2kMsg.GetByte(Index));
+  Target=N2kMsg.GetFloat(Index);
+  ShiftGears=(bool)(N2kMsg.GetByte(Index));
+  return true;
+}
+
+/**************************************************************************/
+// PGN 65282: Zydro "Throttle Control Status"
+
+void SetN2kPGN65282(tN2kMsg &N2kMsg, unsigned char ThrottleID, tN2kZydroThrottleSetpointMode Mode, float TargetValue, float CurrentValue, unsigned char CurrentGear) {
+  N2kMsg.SetPGN(65282L);
+  N2kMsg.Priority=5;
+  N2kMsg.Add2ByteUInt(ZydroProprietary);
+  N2kMsg.AddByte((unsigned char)ThrottleID);
+  N2kMsg.AddByte((unsigned char)Mode);
+  N2kMsg.AddFloat(TargetValue);
+  N2kMsg.AddFloat(CurrentValue);
+  N2kMsg.AddByte(CurrentGear);
+}
+
+bool ParseN2kPGN65282(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydroThrottleSetpointMode &Mode, float &TargetValue, float &CurrentValue, unsigned char &CurrentGear) {
+  if (N2kMsg.PGN!=65282L) return false;
+  int Index=0;
+  if (N2kMsg.Get2ByteUInt(Index)!=ZydroProprietary) return false;
+  ThrottleID=N2kMsg.GetByte(Index);
+  Mode=(tN2kZydroThrottleSetpointMode)(N2kMsg.GetByte(Index));
+  TargetValue=N2kMsg.GetFloat(Index);
+  CurrentValue=N2kMsg.GetFloat(Index);
+  CurrentGear=N2kMsg.GetByte(Index);
+  return true;
+}
