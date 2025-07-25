@@ -68,7 +68,7 @@ enum tN2kZydroThrottleSetpointMode {
     tN2kZydroThrottleSetpointMode_idle=1,
     tN2kZydroThrottleSetpointMode_throttlePercentage=2,
     tN2kZydroThrottleSetpointMode_rpm=3
-}
+};
 
 /**************************************************************************
  * \brief PGN 65280: Zydro "Product Heartbeat"
