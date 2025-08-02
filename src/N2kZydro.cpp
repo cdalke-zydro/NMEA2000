@@ -98,3 +98,39 @@ bool ParseN2kPGN65282(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydr
   CurrentGear=N2kMsg.GetByte(Index);
   return true;
 }
+
+/**************************************************************************/
+// PGN 65283: Zydro "Remote Control Input"
+
+void SetN2kPGN65283(tN2kMsg &N2kMsg, unsigned char JoystickID, bool Connected, float Channel1, float Channel2, float Channel3, float Channel4, float Channel5, float Channel6, float Channel7, float Channel8) {
+  N2kMsg.SetPGN(65283L);
+  N2kMsg.Priority=5;
+  N2kMsg.Add2ByteUInt(ZydroProprietary);
+  N2kMsg.AddByte((unsigned char)JoystickID);
+  N2kMsg.AddByte((unsigned char)Connected);
+  N2kMsg.AddFloat(Channel1);
+  N2kMsg.AddFloat(Channel2);
+  N2kMsg.AddFloat(Channel3);
+  N2kMsg.AddFloat(Channel4);
+  N2kMsg.AddFloat(Channel5);
+  N2kMsg.AddFloat(Channel6);
+  N2kMsg.AddFloat(Channel7);
+  N2kMsg.AddFloat(Channel8);
+};
+
+bool ParseN2kPGN65283(const tN2kMsg &N2kMsg, unsigned char &JoystickID, bool &Connected, float &Channel1, float &Channel2, float &Channel3, float &Channel4, float &Channel5, float &Channel6, float &Channel7, float &Channel8) {
+  if (N2kMsg.PGN!=65283L) return false;
+  int Index=0;
+  if (N2kMsg.Get2ByteUInt(Index)!=ZydroProprietary) return false;
+  JoystickID=N2kMsg.GetByte(Index);
+  Connected=(bool)(N2kMsg.GetByte(Index));
+  Channel1=N2kMsg.GetFloat(Index);
+  Channel2=N2kMsg.GetFloat(Index);
+  Channel3=N2kMsg.GetFloat(Index);
+  Channel4=N2kMsg.GetFloat(Index);
+  Channel5=N2kMsg.GetFloat(Index);
+  Channel6=N2kMsg.GetFloat(Index);
+  Channel7=N2kMsg.GetFloat(Index);
+  Channel8=N2kMsg.GetFloat(Index);
+  return true;
+};

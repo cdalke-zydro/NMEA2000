@@ -119,6 +119,27 @@ bool ParseN2kPGN65281(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydr
 void SetN2kPGN65282(tN2kMsg &N2kMsg, unsigned char ThrottleID, tN2kZydroThrottleSetpointMode Mode, float TargetValue, float CurrentValue, unsigned char CurrentGear);
 bool ParseN2kPGN65282(const tN2kMsg &N2kMsg, unsigned char &ThrottleID, tN2kZydroThrottleSetpointMode &Mode, float &TargetValue, float &CurrentValue, unsigned char &CurrentGear);
 
+/**************************************************************************
+ * \brief PGN 65283: Zydro "Remote Control Input"
+ * 
+ * This message encodes raw joystick inputs from a controller.
+ * 
+ * \param N2kMsg          Reference to a N2kMsg Object, 
+ *                        Output: NMEA2000 message ready to be send.
+ * \param JoystickID      Integer ID for the joystick; typically 0.
+ * \param Connected       Boolean representing if the joystick is currently connected.
+ * \param Channel1        RC Channel 1 value (-1.0 to 1.0)
+ * \param Channel2        RC Channel 2 value (-1.0 to 1.0)
+ * \param Channel3        RC Channel 3 value (-1.0 to 1.0)
+ * \param Channel4        RC Channel 4 value (-1.0 to 1.0)
+ * \param Channel5        RC Channel 5 value (-1.0 to 1.0)
+ * \param Channel6        RC Channel 6 value (-1.0 to 1.0)
+ * \param Channel7        RC Channel 7 value (-1.0 to 1.0)
+ * \param Channel8        RC Channel 8 value (-1.0 to 1.0)
+ */
+void SetN2kPGN65283(tN2kMsg &N2kMsg, unsigned char JoystickID, bool Connected, float Channel1, float Channel2, float Channel3, float Channel4, float Channel5, float Channel6, float Channel7, float Channel8);
+bool ParseN2kPGN65283(const tN2kMsg &N2kMsg, unsigned char &JoystickID, bool &Connected, float &Channel1, float &Channel2, float &Channel3, float &Channel4, float &Channel5, float &Channel6, float &Channel7, float &Channel8);
+
 /**************************************************************************/
 
 #endif
